@@ -1,36 +1,8 @@
 <template>
-  <button class="btn btn-default">
+  <button class="px-6 py-3 border-none rounded cursor-pointer text-base transition-all duration-300 ease-in-out bg-black text-white hover:bg-gray-800 hover:scale-105 active:scale-95">
     <slot>Click Me</slot>
   </button>
 </template>
 
-<script>
-export default {
-  name: 'ButtonDefault',
-};
+<script setup lang="js">
 </script>
-
-<style scoped>
-.btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.btn-default {
-  background-color: #000;
-  color: white;
-}
-
-.btn-default:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-.btn-default:active {
-  transform: scale(0.95);
-}
-</style>
