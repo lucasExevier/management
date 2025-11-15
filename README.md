@@ -139,14 +139,7 @@ A comprehensive project management application built with Laravel 12 and Vue.js 
 - **tasks**: Task details with assignments and status
 - **boards**: Kanban boards with position tracking
 
-### RBAC Tables
-- **companies**: Organization structure
-- **departments**: Department management
-- **teams**: Team organization
-- **roles**: User roles
-- **permissions**: Granular permissions
-- **user_roles**: User-role assignments
-- **role_permissions**: Role-permission mappings
+
 
 ## 🔗 API Endpoints
 
