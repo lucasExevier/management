@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Boards
 Route::apiResource('boards', BoardController::class);
 Route::patch('boards/{id}/position', [BoardController::class, 'updatePosition']);
+
+    // Reports
+    Route::apiResource('reports', ReportController::class);
 });
