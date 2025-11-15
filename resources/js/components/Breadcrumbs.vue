@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex mb-6 px-6 py-3 bg-white border-b border-gray-200" aria-label="Breadcrumb">
+  <nav class="flex mb-2 px-6 py-3 bg-white border-b border-gray-200" aria-label="Breadcrumb">
     <ol class="flex items-center space-x-3">
       <!-- Home/Dashboard Link -->
       <li>
