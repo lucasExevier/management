@@ -1,92 +1,97 @@
 <template>
-  <div class="min-h-screen bg-gray-100">
-    <nav class="bg-white shadow">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex">
-            <div class="flex-shrink-0 flex items-center">
-              <router-link to="/dashboard" class="text-xl font-bold text-gray-900">Project Management System</router-link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+  <div>
+    <main class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
       <div class="px-4 py-6 sm:px-0">
-        <div class="md:grid md:grid-cols-3 md:gap-6">
-          <div class="md:col-span-1">
-            <div class="px-4 sm:px-0">
-              <h3 class="text-lg font-medium leading-6 text-gray-900">{{ isEditing ? 'Edit Project' : 'Create New Project' }}</h3>
-              <p class="mt-1 text-sm text-gray-600">
-                {{ isEditing ? 'Update your project details.' : 'Fill in the details to create a new project.' }}
-              </p>
-            </div>
+        <!-- Header -->
+        <div class="mb-8">
+          <div class="flex items-center space-x-4 mb-4">
+            <router-link
+              to="/projects"
+              class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              Back to Projects
+            </router-link>
           </div>
-          <div class="mt-5 md:mt-0 md:col-span-2">
-            <form @submit.prevent="handleSubmit">
-              <div class="shadow sm:rounded-md sm:overflow-hidden">
-                <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                  <InputText
-                    id="name"
-                    label="Project Name"
-                    placeholder="Enter project name"
-                    required
-                    :error="errors.name ? errors.name[0] : false"
-                    v-model="form.name"
-                  />
+          <h1 class="text-3xl font-bold text-gray-900">{{ isEditing ? 'Edit Project' : 'Create New Project' }}</h1>
+          <p class="mt-2 text-gray-600">
+            {{ isEditing ? 'Update your project details and settings.' : 'Fill in the details below to create a new project.' }}
+          </p>
+        </div>
 
-                  <InputTextarea
-                    id="description"
-                    label="Description"
-                    placeholder="Project description..."
-                    :error="errors.description ? errors.description[0] : false"
-                    v-model="form.description"
-                  />
-
-                  <InputSelect
-                    id="status"
-                    label="Status"
-                    :options="[
-                      { value: 'active', label: 'Active' },
-                      { value: 'inactive', label: 'Inactive' },
-                      { value: 'completed', label: 'Completed' }
-                    ]"
-                    :error="errors.status ? errors.status[0] : false"
-                    v-model="form.status"
-                  />
-
-                  <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                      <InputDate
-                        id="start_date"
-                        label="Start Date"
-                        :error="errors.start_date ? errors.start_date[0] : false"
-                        v-model="form.start_date"
-                      />
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-3">
-                      <InputDate
-                        id="end_date"
-                        label="End Date"
-                        :error="errors.end_date ? errors.end_date[0] : false"
-                        v-model="form.end_date"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <FormActions
-                  :loading="loading"
-                  :show-cancel="true"
-                  :show-submit="true"
-                  cancel-text="Cancel"
-                  :submit-text="isEditing ? 'Update Project' : 'Create Project'"
-                  loading-text="Saving..."
-                  @cancel="$router.go(-1)"
+        <div class="bg-white shadow-sm border border-gray-200 rounded-lg">
+          <div class="px-6 py-6">
+            <form @submit.prevent="handleSubmit" class="space-y-6">
+              <div>
+                <InputText
+                  id="name"
+                  label="Project Name"
+                  placeholder="Enter project name"
+                  required
+                  :error="errors.name ? errors.name[0] : false"
+                  v-model="form.name"
                 />
               </div>
+
+              <div>
+                <InputTextarea
+                  id="description"
+                  label="Description"
+                  placeholder="Project description..."
+                  :error="errors.description ? errors.description[0] : false"
+                  v-model="form.description"
+                />
+              </div>
+
+              <div>
+                <InputSelect
+                  id="status"
+                  label="Status"
+                  :options="[
+                    { value: 'active', label: 'Active' },
+                    { value: 'inactive', label: 'Inactive' },
+                    { value: 'completed', label: 'Completed' }
+                  ]"
+                  :error="errors.status ? errors.status[0] : false"
+                  v-model="form.status"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <InputDate
+                    id="start_date"
+                    label="Start Date"
+                    :error="errors.start_date ? errors.start_date[0] : false"
+                    v-model="form.start_date"
+                  />
+                </div>
+
+                <div>
+                  <InputDate
+                    id="end_date"
+                    label="End Date"
+                    :error="errors.end_date ? errors.end_date[0] : false"
+                    v-model="form.end_date"
+                  />
+                </div>
+              </div>
             </form>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 rounded-b-lg">
+            <FormActions
+              :loading="loading"
+              :show-cancel="true"
+              :show-submit="true"
+              cancel-text="Cancel"
+              :submit-text="isEditing ? 'Update Project' : 'Create Project'"
+              loading-text="Saving..."
+              @cancel="$router.go(-1)"
+            />
           </div>
         </div>
       </div>
