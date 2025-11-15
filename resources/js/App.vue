@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import Sidebar from './components/Sidebar.vue'
+import TopNavbar from './components/TopNavbar.vue'
 import Breadcrumbs from './components/Breadcrumbs.vue'
 import Notification from './components/Notification.vue'
 
@@ -17,9 +18,17 @@ const isAuthenticatedRoute = computed(() => {
     <Notification />
     <div v-if="isAuthenticatedRoute" class="min-h-screen bg-gray-50">
       <Sidebar>
-        <div class="p-6">
+        <div class="flex flex-col h-screen">
+          <!-- Top Navbar -->
+          <TopNavbar />
+
+          <!-- Breadcrumbs -->
           <Breadcrumbs />
-          <router-view />
+
+          <!-- Main Content -->
+          <main class="flex-1 overflow-y-auto p-6">
+            <router-view />
+          </main>
         </div>
       </Sidebar>
     </div>
