@@ -16,6 +16,9 @@ import TaskDetail from '../components/Tasks/TaskDetail.vue';
 import BoardList from '../components/Boards/BoardList.vue';
 import BoardForm from '../components/Boards/BoardForm.vue';
 import BoardDetail from '../components/Boards/BoardDetail.vue';
+import ReportList from '../components/Reports/ReportList.vue';
+import ReportForm from '../components/Reports/ReportForm.vue';
+import ReportDetail from '../components/Reports/ReportDetail.vue';
 
 const routes = [
   {
@@ -206,6 +209,52 @@ const routes = [
       breadcrumb: [
         { label: 'Boards', path: '/boards' },
         { label: 'Board :id', path: '/boards/:id' },
+        { label: 'Edit' }
+      ]
+    },
+  },
+  {
+    path: '/reports',
+    name: 'ReportList',
+    component: ReportList,
+    meta: {
+      requiresAuth: true,
+      breadcrumb: { label: 'Reports' }
+    },
+  },
+  {
+    path: '/reports/create',
+    name: 'ReportCreate',
+    component: ReportForm,
+    meta: {
+      requiresAuth: true,
+      breadcrumb: [
+        { label: 'Reports', path: '/reports' },
+        { label: 'Create Report' }
+      ]
+    },
+  },
+  {
+    path: '/reports/:id',
+    name: 'ReportDetail',
+    component: ReportDetail,
+    meta: {
+      requiresAuth: true,
+      breadcrumb: [
+        { label: 'Reports', path: '/reports' },
+        { label: 'Report :id' }
+      ]
+    },
+  },
+  {
+    path: '/reports/:id/edit',
+    name: 'ReportEdit',
+    component: ReportForm,
+    meta: {
+      requiresAuth: true,
+      breadcrumb: [
+        { label: 'Reports', path: '/reports' },
+        { label: 'Report :id', path: '/reports/:id' },
         { label: 'Edit' }
       ]
     },
