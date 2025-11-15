@@ -1,5 +1,6 @@
         <!-- Header -->
-        <div class="mb-8">
+       <template>
+       <div class="mb-8">
           <div class="flex items-center space-x-4 mb-4">
             <router-link
               to="/reports"
@@ -217,9 +218,7 @@
             </div>
           </div>
         </div>
-      </div>
-    </main>
-  </div>
+   
 </template>
 
 <script setup lang="js">
