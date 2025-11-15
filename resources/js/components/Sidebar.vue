@@ -166,6 +166,7 @@ const navigationItems = [
   { name: 'ProjectList', path: '/projects', label: 'Projects', icon: FolderIcon },
     { name: 'BoardList', path: '/boards', label: 'Boards', icon: ViewBoardsIcon },
   { name: 'TaskList', path: '/tasks', label: 'Tasks', icon: ClipboardIcon },
+  { name: 'ReportList', path: '/reports', label: 'Reports', icon: ClipboardIcon },
 
 ]
 
