@@ -10,7 +10,8 @@
     >
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-10"
+      class="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/10"
+
         @click="handleBackdropClick"
       >
         <Transition
@@ -39,6 +40,7 @@
                 </div>
               </div>
             </div>
+
             <div class="bg-gray-50 px-6 py-3 flex justify-end space-x-3 rounded-b-lg">
               <button
                 @click="cancel"
@@ -47,6 +49,7 @@
               >
                 {{ cancelText }}
               </button>
+
               <button
                 @click="confirm"
                 class="px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50"
